@@ -1,0 +1,7 @@
+{
+    "name": "decode",
+    "main": "server.js",
+    "dependencies": {
+        "requirejs": "2.3.3"
+    }
+}
