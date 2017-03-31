@@ -3,7 +3,15 @@ define([
 ], function() {
     return {
         init: function() {
-            console.log("hello world");
+            $("#dropbtn").click(function(){
+                //alert( "Handler for .click() called." );
+                console.log("Menu button clicked!");
+                $(".dropdown-content").toggle("show");
+            });
+            $("#addbtn").click(function(){
+                console.log("Add button clicked!");
+                //parseCSVFile()
+            });
         }
     };
 });

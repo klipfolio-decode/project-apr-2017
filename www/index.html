@@ -1,7 +1,19 @@
 <html>
-    <script data-main="main.js" src="node_modules/requirejs/require.js"></script>
-
+    <script data-main="main.js" src="../node_modules/requirejs/require.js"></script>
+    <script src="jquery-3.2.0.min.js"></script>
     <body>
+        <div class="MenuBar">
+            <button class="button" id="dropbtn">Menu</button>
+            <button class="button" id="addbtn">Add</button>
+            <ul id="myDropdown" class="dropdown-content">
+                <li><a href="#dashboards">Dashboards</a></li>
+                <li><a href="#logout">Logout</a></li>
+            </ul>
+        </div>
         <h1>Hello World</h1>
     </body>
+    <style>
+        .dropdown-content{display:none;}
+        #addbtn{float:right;}
+    </style>
 </html>
