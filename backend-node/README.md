@@ -1,4 +1,4 @@
-## Backend (Java SprintBoot version)
+## Backend (NodeJS version)
 
 The Backend project serves REST API to the Frontend in order to provide the following functionality:
 
@@ -12,19 +12,14 @@ The Backend project serves REST API to the Frontend in order to provide the foll
 
 In order to get start, you will need to install the following tool.
 
-1. [Java 8 (JDK)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) for the platform of your choice.
-2. Lastest [Maven](https://maven.apache.org/download.cgi). Download, unzip, and add /bin to your PATH env var.
+- Install NodeJS and NPM for your platform.
 
-To compile the code:
+To install dependencies:
 
-`mvn clean compile`
+`npm install`
 
-To run tests:
+To run the server:
 
-`mvn test`
-
-To run the webserver:
-
-`mvn spring-boot:run`
+`npm start`
 
 To verify that your webserver started correct, browse to `http://localhost:8080/hello`.
