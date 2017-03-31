@@ -7,9 +7,9 @@ Here are a few things you need to get started.
 2. [NPM](#npm)
 
 ## Git Cheat Sheet
-Here are a few commands to get you started with git. 
+Here are a few commands to get you started with git.
 
-The first thing you will need to do is clone the repository in to your dev environment. 
+The first thing you will need to do is clone the repository in to your dev environment.
 
 To do this, you will need to have git installed.
 Windows Users: https://git-for-windows.github.io/
@@ -44,3 +44,19 @@ NPM is a useful tool for dependency management. Install it using the following l
 Once installed, run `npm install` in the root directory of the repo.  
 
 New dependencies can be added by either adding them to the `package.json` file, or by doing `npm install 'packagename' -s`.  
+
+## Get Started
+
+In order to get start, you will need to install the following tool.
+
+- Install NodeJS and NPM for your platform.
+
+To install dependencies:
+
+`npm install`
+
+To run the server:
+
+`npm start`
+
+To verify that your webserver started correct, browse to `http://localhost:8080/hello`.
