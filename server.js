@@ -9,8 +9,8 @@ var port = 8080;
 var router = express.Router();
 
 app.get('/hello', function(req, res) {
-    res.json({ message: 'Hello World!' });
-    console.log(typeof schema.func);
+    //res.json(schema.schema_id_to_json());
+    res.json(schema.schema_id_to_header_list());
 });
 
 app.get('/files/list', function(req, res) { //getFileList
@@ -26,7 +26,7 @@ app.get('/schema/create', function(req, res){ //createSchema
 });
 
 app.get('/schema/update', function(req, res){
-    res.json({  id: 1 });
+    res.json(schema.update_schema(null, null));
 })
 
 app.get('/schema/get', function(req, res){
