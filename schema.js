@@ -8,7 +8,7 @@ module.exports = {
     //console.log(parse);
   },
 
-  schema_id_to_header_array: function(){
+  schema_id_to_header_array: function(id){
     var header_list = papa.parse("one, two, three").data;
     console.log(header_list);
     return header_list;
@@ -24,8 +24,8 @@ module.exports = {
     return dummy_json;
   },
 
-  create_schema: function(file_id){
-    //lookup by id
+  create_schema: function(){
+    //lookup file by id
     //parse csv into array of arrays-> Reuse some parsing logic from header gathering? only add columns for provided headers
     //create schema object string + id
     //save schema

@@ -25,6 +25,10 @@ app.get('/schema/create', function(req, res){ //createSchema
     res.json({  id: 1 });
 });
 
+app.get('/schema/list', function(req, res){
+    res.json({ [1,2,3] });
+});
+
 app.get('/schema/update', function(req, res){
     res.json(schema.update_schema(null, null));
 })
