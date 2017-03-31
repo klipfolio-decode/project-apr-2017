@@ -1,8 +1,15 @@
 var express = require('express');
 var schema = require('./schema');
 var data = require('./data');
+var mongo = require('mongodb').MongoClient;
 
 var app = express();
+
+var DBURL = "mongodb://localhost:27017/klipfolioDecodeDB"
+
+//Serving templates
+app.set('www','./www');
+app.set('view engine','html');
 
 var port = 8080;
 
@@ -14,7 +21,8 @@ app.get('/hello', function(req, res) {
 });
 
 app.get('/files/list', function(req, res) { //getFileList
-    res.json({ files:["file1","file2"] });
+
+    res.json({ files:[["file1",_id],["file2",_id]...});  //format shown
 });
 
 app.get('/files/headers', function(req, res){ //getColumnHeaders
@@ -36,6 +44,16 @@ app.get('/schema/get', function(req, res){
         style: {},
     });
 });
+
+
+app.use(express.static("./www"));
+
+//When you make a request to the home page, render HTML
+app.get("/",function(req,res){
+  res.render('index.html');
+});
+
+
 
 app.listen(port, function() {
   console.log("server started at port " + port);
