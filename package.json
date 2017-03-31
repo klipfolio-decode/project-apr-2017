@@ -6,6 +6,10 @@
     "requirejs": "2.3.3"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "papaparse": "^4.2.0"
+=======
+    "mongodb": "^2.2.25"
+>>>>>>> 93d496c7ef6d62418710921ace74466696a49ccf
   }
 }
