@@ -1,0 +1,11 @@
+body {
+	font-family: 'Trebuchet MS';
+}
+table {
+	text-align:center;
+}
+table th, table tr, table td {
+	margin:0;
+	padding:5px;
+	border-width:0;
+}
