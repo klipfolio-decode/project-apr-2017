@@ -1,5 +1,5 @@
 define([
-    "scripts/header.js"
+    "header.js"
 ], function(Header){
     Header.init();
 })
