@@ -22,7 +22,7 @@ app.get('/hello', function(req, res) {
 
 app.get('/files/list', function(req, res) { //getFileList
 
-    res.json({ files:[["file1",_id],["file2",_id]...});  //format shown
+    res.json({ files:["file1","file2"]});  //format shown
 });
 
 app.get('/files/headers', function(req, res){ //getColumnHeaders
@@ -50,7 +50,7 @@ app.use(express.static("./www"));
 
 //When you make a request to the home page, render HTML
 app.get("/",function(req,res){
-  res.render('index.html');
+  res.render('index');
 });
 
 

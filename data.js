@@ -7,7 +7,7 @@ module.exports = {
         res.sendStatus(500);
         db.close();
       }else{
-        db.collection("files").find({}.{_id:1,name: 1, data:0},function(err,cursor){
+        db.collection("files").find({},{_id:1,name: 1, data:0},function(err,cursor){
           if(err){
             res.sendStatus(500);
           }else{
