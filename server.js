@@ -34,12 +34,12 @@ app.get('/schema/create', function(req, res){ //createSchema
 });
 
 app.get('/schema/list', function(req, res){
-    res.json({ [1,2,3] });
+    res.json({ ids: [1, 2, 3] });
 });
 
 app.get('/schema/update', function(req, res){
     res.json(schema.update_schema(null, null));
-})
+});
 
 app.get('/schema/get', function(req, res){
     res.json({
