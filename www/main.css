@@ -29,6 +29,15 @@ html, body {
     height: 20px;
 }
 
+.visualization-toolbar {
+    padding: 5px 5px 10px 5px;
+}
+
+#dashboard-container > hr {
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
 .border-south {
     margin-bottom: 5px;
 }
