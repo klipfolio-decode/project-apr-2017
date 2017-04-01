@@ -54,6 +54,7 @@ app.get('/files/headers', function(req, res){ //getColumnHeaders
             //var someArray = data_to_header_array (data);
             //res.json({  headers: someArray }); //potentially return data[[]]
             console.log(data);
+            res.json({  headers:["header1", "header2"] });
           }
         });
       }
