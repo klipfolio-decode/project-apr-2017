@@ -4,9 +4,16 @@ html, body {
 }
 
 .header {
+    background-color: #2a2a2a;
     border: solid 1px #d3d3d3;
     height: 30px;
     width: 100%;
+}
+
+.header > button {
+    background: transparent;
+    color: white;
+    border: none;
 }
 
 .border-south {
