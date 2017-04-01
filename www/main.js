@@ -5,6 +5,4 @@ define([
 ], function(Header, API, Dashboard){
     Header.init();
     Dashboard.init();
-
-
 });
