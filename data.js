@@ -28,12 +28,8 @@ module.exports = {
       }
     });
   },
-<<<<<<< Updated upstream
-  func2: function(){
-=======
   getData: function(id){
 
 
->>>>>>> Stashed changes
   },
 };
