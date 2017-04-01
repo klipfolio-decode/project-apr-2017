@@ -30,7 +30,7 @@ app.get('/files/headers', function(req, res){ //getColumnHeaders
 });
 
 app.get('/schema/create', function(req, res){ //createSchema
-    res.json({  id: 1 });
+    res.json(schema.get_schema(1));
 });
 
 app.get('/schema/list', function(req, res){

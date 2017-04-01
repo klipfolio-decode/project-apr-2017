@@ -1,4 +1,6 @@
 var papa = require('papaparse');
+var mongo = require('mongodb').MongoClient;
+var DBURL = "mongodb://localhost:27017/klipfolioDecodeDB"
 
 module.exports = {
   schema_id_to_json: function() {
@@ -34,14 +36,19 @@ module.exports = {
   },
 
   get_schema: function(id){
+    mongo.connect(DBURL,function(err,db){
+      db.collection("schemas").findOne({_id:id},function(err,rec){
+        if (err){
+          console.log(err);
+        }
+        console.log(rec.schema);
+        return rec.schema;
+      })
+    });
+
+},
+
     //get schema by id, return schema json object
-    dummy_json = {
-      data: [[]],
-      type: "table",
-      style: {},
-    };
-    //save it
-    return dummy_json;
-  },
+
 
 };
