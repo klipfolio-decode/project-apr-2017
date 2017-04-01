@@ -88,7 +88,7 @@ app.post('/schema/create', function(req, res){ //createSchema
           console.log(req.body);
           var column_data = schema.get_requested_columns(req.body, data);
 
-          var result = schema.create_schema(req.body);
+          var result = schema.create_schema(column_data);
 
           insertSchema(db,result,req,res);  //inserts schema and sends schema id
         }

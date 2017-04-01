@@ -2,13 +2,14 @@ body {
 	font-family: 'Trebuchet MS';
 }
 table {
-	text-align:center;
+	/*text-align:center;*/
 }
 table th, table tr, table td {
 	margin:0;
 	padding:10px;
 	border-width:0;
 	font-size: 1.5em;
+	border: 1px solid black;
 }
 
 /* Popup container */
