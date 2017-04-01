@@ -23,6 +23,9 @@ app.use(function(req,res,next){
     next();
 });
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+
 app.get('/hello', function(req, res) {
     //res.json(schema.schema_id_to_header_list());
 });
@@ -52,21 +55,24 @@ app.get('/files/headers', function(req, res){ //getColumnHeaders
             //var someArray = data_to_header_array (data);
             //res.json({  headers: someArray }); //potentially return data[[]]
             console.log(data);
-            res.json({  headers:["header1", "header2"] });
+
+            res.json({  headers: schema.data_to_header_array(data) });
           }
         });
       }
     });
 });
 
-app.get('/schema/create', function(req, res){ //createSchema
+app.post('/schema/create', function(req, res){ //createSchema
   //gets data from file given id
   mongo.connect(DBURL,function(err,db){
     if (err){
       console.log("Failed to connect to the database.");
       res.sendStatus(500);
       db.close();
-    }else{
+    }
+
+    else{
       //var id = req.query.id;
       var id = "58df016664569de96ec7469b";
       db.collection("files").findOne({"_id": ObjectId(id)}, function(err, rec){
@@ -74,27 +80,20 @@ app.get('/schema/create', function(req, res){ //createSchema
           console.log("Failed to connect to database. ERROR: ", err);
           res.sendStatus(500);
           db.close();
-        } else {
+        }
+        else {
           var data = rec.data;
-          //data_2_columns(data);
-          //console.log(data);
-          //get columns from data
-          //create_schema
+          console.log(req);
+          var headers = req.body;
+          console.log(req.body);
+          var column_data = schema.get_requested_columns(req.body, data);
+
+          var result = schema.create_schema(req.body);
+
+          insertSchema(db,result,req,res);  //inserts schema and sends schema id
         }
       });
     }
-
-
-    //insert mongo schema. This is just a test schema for now.
-    var schema = {"data":[[123,34],[56,09]],
-                   "type":"line",
-                   "style":{
-                       "border-style":"dotted"
-                    }
-                 }
-
-    insertSchema(db,schema,req,res);  //inserts schema and sends schema id
-
   });
 });
 
