@@ -3,21 +3,18 @@ var mongo = require('mongodb').MongoClient;
 var DBURL = "mongodb://localhost:27017/klipfolioDecodeDB"
 
 module.exports = {
-  schema_id_to_json: function() {
-    console.log("test");
-    var parse = papa.parse("one, two, three");
-    return parse;
-    //console.log(parse);
+  schema_id_to_json: function(data) { //pass data from schema object
+    return papa.parse("one, two, three");
   },
 
-  schema_id_to_header_array: function(id){
-    var header_list = papa.parse("one, two, three").data;
+  data_to_header_array: function(data){
+    var header_list = papa.parse(data);
     console.log(header_list);
     return header_list;
   },
 
-  update_schema: function(new_schema, id) {
-    dummy_json = {
+  update_schema: function(new_schema, id) { //pass old schema as well??
+    dummy_json = {                          //use built in function?
       data: [[]],
       type: "table",
       style: {},
@@ -26,13 +23,28 @@ module.exports = {
     return dummy_json;
   },
 
-  create_schema: function(){
+  create_schema: function(id){
     //lookup file by id
     //parse csv into array of arrays-> Reuse some parsing logic from header gathering? only add columns for provided headers
     //create schema object string + id
     //save schema
     //return schema id
-    return 1;
+    mongo.connect(DBURL,function(err,db){
+      db.collection("files").findOne({_id:id},function(err,rec){
+        if (err){
+          console.log(err);
+        }
+        var csv_data = rec.data;
+      })
+    });
+
+    var schema_data = papa.parse(csv_data);
+    return {
+      data: schema_data,
+      type: "table",
+      style: {}
+    };
+
   },
 
   get_schema: function(id){
