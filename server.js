@@ -26,7 +26,7 @@ app.get('/files/list', function(req, res) { //getFileList
 });
 
 app.get('/files/headers', function(req, res){ //getColumnHeaders
-    res.json({  headers:["header1, header2"] }); //potentially return data[[]]
+    res.json({  headers:["header1", "header2"] }); //potentially return data[[]]
 });
 
 app.get('/schema/create', function(req, res){ //createSchema
