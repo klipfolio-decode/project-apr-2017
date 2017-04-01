@@ -9,19 +9,9 @@ module.exports = {
 
   data_to_header_array: function(data){
     var parsed_data = papa.parse(data);
-    console.log(parsed_data.data);
     var header_list = parsed_data.data[0];
+    console.log("header list: " + header_list);
     return header_list;
-  },
-
-  update_schema: function(new_schema, id) { //pass old schema as well??
-    dummy_json = {                          //use built in function?
-      data: [[]],
-      type: "table",
-      style: {},
-    };
-    //save it
-    return dummy_json;
   },
 
   data_to_columns: function(data_csv) {
@@ -75,7 +65,7 @@ module.exports = {
       })
     });
 
-},
+}
 
     //get schema by id, return schema json object
 
