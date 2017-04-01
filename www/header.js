@@ -1,8 +1,9 @@
 define([
   "page3.js",
   "api.js",
-  "dashboard.js"
-], function(Page3, API, Dashboard) {
+  "dashboard.js",
+  "utils.js"
+], function(Page3, API, Dashboard, Utils) {
   return {
     init: function() {         
       $("#dropbtn").click(function() {
@@ -51,6 +52,31 @@ define([
               closeAdd();
             });
         }
+      });
+
+
+      // colors
+      $(".color-check").click(function() { 
+        var headerSelected = document.querySelector('input[name = "hcolors"]:checked').value; 
+        var cellSelected = document.querySelector('input[name = "ccolors"]:checked').value;
+        var id = Utils.getCurrentlyEditingID(); 
+        API.getSchema(id)
+          .done(function(data) {
+            var schema = data;
+            var new_schema = {
+              "data": schema.data,
+              "type": schema.type,
+              "style": {
+                "header-color": headerSelected,
+                "cell-color": cellSelected
+              }
+            } 
+            API.updateSchema(id, new_schema)
+              .done(function(data) {
+                console.log(new_schema);
+                Dashboard.renderDashboard();
+              });
+          });
       });
     }
   };
