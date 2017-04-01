@@ -27,10 +27,9 @@
         </button>
     </div>
 
-
     <div id="dashboard-container"></div>
 
-	<div id="edit" class="edit-hidden"'>
+	<div id="edit" class="edit-hidden">
 		<form action="">
 			<h4 style="color: white; margin-left: 10px">Header color:</h4>
 			<div class="editheader" style="margin-top: 10px; margin-left: 10px;">
@@ -62,21 +61,8 @@
 		<div class="editselect"><button class="color-cancel btn btn-danger" style="margin-right:5px;">Cancel <span class="glyphicon glyphicon-remove"></span></button><button class="color-check btn btn-success">Apply <span class="glyphicon glyphicon-ok"></span></button>
 		</div>
 	</div>
+    <input id="viz-edit-id" type="hidden" />
   </body>
-
-    <script>
-	// When the user clicks on <div>, open the popup
-	function showEdit() {
-	    var edit = $("#edit")
-	    console.log("called");
-
-	    if (edit.hasClass("edit-show")) {
-	    	edit.removeClass("edit-show");
-	    } else {
-	    	edit.addClass("edit-show");
-	    }
-	}
-	</script>
     <style>
         .dropdown-content{display:none;}
         #addbtn{float:right;}

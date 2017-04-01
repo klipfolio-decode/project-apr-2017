@@ -7,7 +7,7 @@ define([
             var num_rows = schema.data[0].length;
             var num_cols = schema.data.length;
             var style = schema.style;
-            var theader = "<table id='table1' onclick='showEdit()' style='margin: auto;' width = 80%><tr>";
+            var theader = "<table id='table1' style='margin: auto;' width = 80%><tr>";
             var tbody = " ";
 
             for(var j = 0; j < num_cols; j++)
