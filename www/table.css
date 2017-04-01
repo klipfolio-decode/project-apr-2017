@@ -15,9 +15,6 @@ table th, table tr, table td {
 .popup {
     cursor: pointer;
 }
-.editheader{
-	right: 100px;
-}
 .editheader input {
     position: absolute !important;
     clip: rect(0, 0, 0, 0);
@@ -70,4 +67,11 @@ table th, table tr, table td {
 
 .edit-show {
 	display: inline-block;
+}
+
+.editselect{
+	margin: 20px;
+}
+.editselect .color-check{
+	margin: 10px;
 }

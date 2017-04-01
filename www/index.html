@@ -14,7 +14,7 @@
     <div class="header">
         <div id="add" class="overlay">
           <div class="overlay-content">
-            <h4>Select the columns from your file</h2>
+            <h4>Select the columns from your file</h4>
             <div id="page-3" class="border-south"></div>
             <div><button class="closebtn btn btn-danger" style="margin-right:5px;">Cancel <span class="glyphicon glyphicon-remove"></span></button><button class="check btn btn-success">Accept <span class="glyphicon glyphicon-ok"></span></button></div>
           </div>
@@ -32,7 +32,8 @@
 
 	<div id="edit" class="edit-hidden"'>
 		<form action="">
-			<div class="editheader">
+			<h4 style="color: white; margin-left: 10px">Header color:</h4>
+			<div class="editheader" style="margin-top: 10px; margin-left: 10px;">
 				<input type="radio" name="hcolors" id="blue">
 				<label for="blue" class="bluebtn"></label>
 				<input type="radio" name="hcolors" id="blgreen">
@@ -44,7 +45,22 @@
 				<input type="radio" name="hcolors" id="red">
 				<label for="red" class="redbtn"></label>
 			</div>
+			<h4 style="color: white; margin-left: 10px">Cell color:</h4>
+			<div class="editheader" style="margin-left: 10px;">
+				<input type="radio" name="ccolors" id="cblue">
+				<label for="cblue" class="bluebtn"></label>
+				<input type="radio" name="ccolors" id="cblgreen">
+				<label for="cblgreen" class="blgreenbtn"></label>
+				<input type="radio" name="ccolors" id="cgreen">
+				<label for="cgreen" class="greenbtn"></label>
+				<input type="radio" name="ccolors" id="cyellow">
+				<label for="cyellow" class="yellowbtn"></label>
+				<input type="radio" name="ccolors" id="cred">
+				<label for="cred" class="redbtn"></label>
+			</div>
 		</form>
+		<div class="editselect"><button class="color-cancel btn btn-danger" style="margin-right:5px;">Cancel <span class="glyphicon glyphicon-remove"></span></button><button class="color-check btn btn-success">Apply <span class="glyphicon glyphicon-ok"></span></button>
+		</div>
 	</div>
   </body>
 
@@ -53,7 +69,6 @@
 	function showEdit() {
 	    var edit = $("#edit")
 	    console.log("called");
-	    //edit.style.height = window.innerHeight - 60+"px";
 
 	    if (edit.hasClass("edit-show")) {
 	    	edit.removeClass("edit-show");
