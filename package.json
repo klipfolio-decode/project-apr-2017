@@ -6,7 +6,8 @@
     "requirejs": "2.3.3"
   },
   "devDependencies": {
-    "papaparse": "^4.2.0",
-    "mongodb": "^2.2.25"
+    "body-parser": "^1.17.1",
+    "mongodb": "^2.2.25",
+    "papaparse": "^4.2.0"
   }
 }
