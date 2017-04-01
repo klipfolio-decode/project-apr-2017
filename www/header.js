@@ -10,12 +10,9 @@ define([
         // $("#dropbtn").toggle("change");
       });
       $("#addbtn").click(function() {
-        console.log("Menu button clicked!");
+        console.log("Add button clicked!");
+        Page3.headers(1);
         //parseCSVFile();
-      });
-      $("#page3btn").click(function() {
-        console.log('clicked');
-        Page3.headers(1); 
       });
     }
   };
