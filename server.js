@@ -7,6 +7,12 @@ var bodyParser = require("body-parser");
 
 var app = express();
 
+<<<<<<< Updated upstream
+=======
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+
+>>>>>>> Stashed changes
 var DBURL = "mongodb://root:root@ds147520.mlab.com:47520/klip-decode"
 
 //Serving templates
@@ -128,7 +134,12 @@ app.get('/schema/list', function(req, res){
   });
 });
 
+<<<<<<< Updated upstream
 app.get('/schema/update/:id', function(req, res){
+=======
+
+app.post('/schema/update/:id', function(req, res){
+>>>>>>> Stashed changes
    //update mongo schema
    mongo.connect(DBURL,function(err,db){
      if (err){
@@ -137,17 +148,20 @@ app.get('/schema/update/:id', function(req, res){
        db.close();
      }else{
        var id = req.params.id;
-       //console.log(id);
-       //var id = "58dfd37764569de96ec7469c";
+
        db.collection("schemas").findOne({"_id": ObjectId(id)}, function(err, rec){
          if (err) {
            console.log("Failed to connect to database. ERROR: ", err);
            res.sendStatus(500);
            db.close();
          } else {
+<<<<<<< Updated upstream
            console.log(rec);
 
            //res.json(rec);
+=======
+           updateSchema(db,req.body,id,req,res);
+>>>>>>> Stashed changes
          }
        });
      }
@@ -210,7 +224,15 @@ function insertSchema(db,schema,req,res){
 /*
 function updateSchema(db,schema,req,res){
 
+<<<<<<< Updated upstream
   db.collection("schemas").update({name:req.body.name},req.body,{upsert:true},function(err,result){
+=======
+function updateSchema(db,schema,id,req,res){
+  if (schema._id) {
+    delete schema._id;
+  }
+  db.collection("schemas").update({"_id":ObjectId(id)},schema,{upsert:true},function(err,result){
+>>>>>>> Stashed changes
       if(err){
           res.sendStatus(500);
           db.close();
