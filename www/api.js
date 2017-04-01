@@ -26,11 +26,17 @@ define([
             data: JSON.stringify(data),
             dataType: "json",
             contentType: "application/json; charset=utf-8"
-        });
+        });  
     },
 
     updateSchema: function(id, data) {
-      return $.post(URL+'/schema/update/'+id, data);
+      return $.ajax({
+        url: URL+'/schema/update/'+id,
+        type: "POST",
+        data: JSON.stringify(data),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8"
+      });
     }
   }
 })
