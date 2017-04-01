@@ -67,8 +67,8 @@ define([
               "data": schema.data,
               "type": schema.type,
               "style": {
-                "header-color": headerSelected,
-                "cell-color": cellSelected
+                "headerColor": headerSelected,
+                "fillColor": cellSelected
               }
             } 
             API.updateSchema(id, new_schema)
