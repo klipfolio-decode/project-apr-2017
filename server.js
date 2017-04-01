@@ -24,8 +24,6 @@ app.use(function(req,res,next){
 });
 
 app.get('/hello', function(req, res) {
-    //res.json(schema.schema_id_to_json());
-
     //res.json(schema.schema_id_to_header_list());
 });
 
