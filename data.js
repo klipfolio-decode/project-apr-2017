@@ -1,4 +1,5 @@
 module.exports = {
+
   func: function() {
 
     mongo.connect(DBURL,function(err,db){
@@ -27,6 +28,12 @@ module.exports = {
       }
     });
   },
+<<<<<<< Updated upstream
   func2: function(){
+=======
+  getData: function(id){
+
+
+>>>>>>> Stashed changes
   },
 };
