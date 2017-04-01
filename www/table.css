@@ -29,7 +29,7 @@ table th, table tr, table td {
 .editheader label{
 	border-radius: 100%;
   	font-size: 14px;
-  padding: 20px 28px;
+  padding: 20px 20px;
   background-color: #f9c21d;
   margin: 10px;
   -webkit-box-shadow: none;
@@ -55,11 +55,19 @@ table th, table tr, table td {
 	background-color: #fd4543;
 }
 
-#edit{
+#edit {
 	position: fixed;
-	bottom: -1000px;
+	bottom: 0px;
 	width: 100%;
 	height: 50%;
 	background: #333;
 	transition: bottom 0.3s linear 0s;
+}
+
+.edit-hidden {
+	display: none;
+}
+
+.edit-show {
+	display: inline-block;
 }

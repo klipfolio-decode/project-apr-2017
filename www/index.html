@@ -30,9 +30,9 @@
 
     <div id="dashboard-container"></div>
 
-	<div id="edit">
+	<div id="edit" class="edit-hidden"'>
 		<form action="">
-			<div class="editheader"
+			<div class="editheader">
 				<input type="radio" name="hcolors" id="blue">
 				<label for="blue" class="bluebtn"></label>
 				<input type="radio" name="hcolors" id="blgreen">
@@ -52,13 +52,13 @@
 	// When the user clicks on <div>, open the popup
 	function showEdit() {
 	    var edit = $("#edit")
+	    console.log("called");
 	    //edit.style.height = window.innerHeight - 60+"px";
 
-	    console.log(edit.position().top + edit.height())
-	    if (edit.position().top + edit.height() == "1640px") {
-	    	edit.css("bottom, -1000px");
+	    if (edit.hasClass("edit-show")) {
+	    	edit.removeClass("edit-show");
 	    } else {
-	    	edit.css("bottom, 0px");
+	    	edit.addClass("edit-show");
 	    }
 	}
 	</script>
