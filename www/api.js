@@ -20,21 +20,17 @@ define([
     },
 
     createSchema: function(data) {
-      return $.get(URL+'/schema/create');
-    },
-
-    updateSchema: function(id) {
-      return $.get(URL+'/schema/update/'+id);
-    },
-
-    /*
-    createSchema: function(data) {
-      return $.post(URL+'/schema/create', data);
+        return $.ajax({
+            url: URL+'/schema/create',
+            type: "POST",
+            data: JSON.stringify(data),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8"
+        });
     },
 
     updateSchema: function(id, data) {
       return $.post(URL+'/schema/update/'+id, data);
     }
-    */ 
   }
 })
