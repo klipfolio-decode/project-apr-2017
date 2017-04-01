@@ -39,7 +39,7 @@ app.get('/schema/list', function(req, res){
 
 app.get('/schema/update', function(req, res){
     res.json(schema.update_schema(null, null));
-})
+});
 
 app.get('/schema/get', function(req, res){
     res.json({
