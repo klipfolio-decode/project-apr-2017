@@ -2,7 +2,7 @@ define([
     "header.js",
     "api.js"
 ], function(Header, API){
-    Header.init();
+    Header.init(); 
     API.getColumnHeaders()
       .done(function(data) {
         console.log(data);

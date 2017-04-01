@@ -1,18 +1,18 @@
 define([
-  'jquery'
-], function() {
+  "page3.js" 
+], function(Page3) {
   return {
-    init: function() {
+    init: function() {         
       $("#dropbtn").click(function() {
-        //alert( "Handler for .click() called." );
+        //alert("handler for .click() called.");
         console.log("Menu button clicked!");
         $(".dropdown-content").toggle("show");
         // $("#dropbtn").toggle("change");
-
       });
       $("#addbtn").click(function() {
-        console.log("Menu button clicked!");
-      //parseCSVFile()
+        console.log("Add button clicked!");
+        Page3.headers(1);
+        //parseCSVFile();
       });
     }
   };
