@@ -21,7 +21,7 @@ define([
                         // add the viz to the dashboard
                         $("#dashboard-container")
                             .append("<div id='"+id+">")
-                            .append("<div class=\"visualization-toolbar\"><button id='"+id+"-delete'>Delete <span class='glyphicon glyphicon-trash'></button></span><button id='"+id+"-edit' style='float:right;'>Edit <span class='glyphicon glyphicon-edit'>")
+                            .append("<div class=\"visualization-toolbar\"><button id='"+id+"-delete' style='float:right; margin-right: 35px; margin-bottom: 10px; border-radius: 100%; background-color: #fd4543; border:0; padding:5px;'> <span class='glyphicon glyphicon-trash'></button></span><button id='"+id+"-edit' style='float:right; margin-right: 10px; margin-bottom:10px; border-radius: 100%; background-color: #66CCCC; border:0; padding:5px;'> <span class='glyphicon glyphicon-edit'>")
                             .append(Viz.getVisualisation(data) + "<hr>");
                         this.registerVisualisationClickHandler(id);
                     }.bind(this));
