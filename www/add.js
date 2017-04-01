@@ -7,7 +7,10 @@ define([
             API.getColumnHeaders(1)
             .done(function(data) {
                 console.log(data);
+                $("#addbtn").toggle("hide");
                 $("#column-headers-container").html(data.headers);
+                $("#cancelbtn").html("Cancel");
+                $("#confirmbtn").html("OK");
             });
         }
     };

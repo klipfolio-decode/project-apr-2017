@@ -10,10 +10,22 @@
                 <li><a href="#logout">Logout</a></li>
             </ul>
         </div>
-        <h1>Hello World</h1>
+
         <div id="column-headers-container"></div>
+        <div id="headers-container">
+        <button class="botbtn" id="cancelbtn"></button>
+        <button class="botbtn" id="confirmbtn"></button>
+        </div>
     </body>
     <style>
+        .botbtn{
+            position:fixed;
+            bottom: 100px;
+            background-color: Transparent;
+            border: none;
+        }
+        #cancelbtn{left: 10%;}
+        #confirmbtn{right: 10%;}
         .dropdown-content{display:none;}
         #addbtn{float:right;}
     </style>
