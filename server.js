@@ -35,9 +35,6 @@ app.get('/files/list', function(req, res) { //getFileList
 });
 
 app.get('/files/headers', function(req, res){ //getColumnHeaders
-<<<<<<< Updated upstream
-    res.json({  headers:["header1", "header2"] }); //potentially return data[[]]
-=======
     //gets data from file given id
     mongo.connect(DBURL,function(err,db){
       if (err){
@@ -61,7 +58,6 @@ app.get('/files/headers', function(req, res){ //getColumnHeaders
         });
       }
     });
->>>>>>> Stashed changes
 });
 
 app.get('/schema/create', function(req, res){ //createSchema
