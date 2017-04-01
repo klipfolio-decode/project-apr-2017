@@ -1,6 +1,6 @@
 define([
-
-], function() {
+    "add.js"
+], function(Add) {
     return {
         init: function() {
             $("#dropbtn").click(function(){
@@ -10,7 +10,7 @@ define([
             });
             $("#addbtn").click(function(){
                 console.log("Add button clicked!");
-                //parseCSVFile()
+                Add.add();
             });
         }
     };
