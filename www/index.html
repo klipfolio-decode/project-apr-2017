@@ -1,9 +1,16 @@
-<html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <script data-main="main.js" src="../node_modules/requirejs/require.js"></script>
     <script src="jquery-3.2.0.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="menu_bar.css"> 
-    <body>
-    <div class="scrollmenu">
+
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+  <!--
+ <div class="scrollmenu">
       <div class="container">
         <button class="button" id="dropbtn">
           <div class="bar1"></div>
@@ -19,9 +26,15 @@
 				<a href="#style">Style</a>
 				<a href="#chart">Chart</a>
         <a href="#logout">Logout</a>
-      </ul>
-        <h1>Hello World</h1> 
-        <div id="page-3"></div>
-    </body>
-</html>
+      </ul> 
+  -->
 
+    <div id="add" class="overlay">
+      <a href="javascript:void(0)" class="closebtn">&times;</a>
+      <div class="overlay-content"> 
+        <div id="page-3"></div>
+      </div>
+    </div>
+    <button id="addbtn" style="float:right;">+</button>
+  </body>
+</html>
