@@ -28,22 +28,13 @@
         <a href="#logout">Logout</a>
       </ul> 
   -->
-    <div id="addbtn" class="overlay">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeAdd()">&times;</a>
+
+    <div id="add" class="overlay">
+      <a href="javascript:void(0)" class="closebtn">&times;</a>
       <div class="overlay-content"> 
         <div id="page-3"></div>
       </div>
     </div>
-    <span style="font-size:30px;cursor:pointer;float:right;" onclick="openAdd()">+&nbsp</span>
-
-    <script>
-      function openAdd() {
-          document.getElementById("addbtn").style.height = "100%";
-      }
-
-      function closeAdd() {
-          document.getElementById("addbtn").style.height = "0%";
-      }
-    </script>
+    <button id="addbtn" style="float:right;">+</button>
   </body>
 </html>
