@@ -26,7 +26,7 @@ define([
             data: JSON.stringify(data),
             dataType: "json",
             contentType: "application/json; charset=utf-8"
-        });  
+        });
     },
 
     updateSchema: function(id, data) {
@@ -37,6 +37,13 @@ define([
         dataType: "json",
         contentType: "application/json; charset=utf-8"
       });
+    },
+
+    deleteSchema: function(id) {
+        return $.ajax({
+           url: URL + '/schema/delete/'+id,
+           type: 'DELETE'
+        });
     }
   }
 })
