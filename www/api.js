@@ -12,7 +12,7 @@ define([
     },
 
     getSchema: function(id) {
-      return $.get(URL+'/schema/get')
+      return $.get(URL+'/schema/get/'+id)
     },
 
     getFileList: function() {
@@ -23,8 +23,8 @@ define([
       return $.get(URL+'/schema/create');
     },
 
-    updateSchema: function(data) {
-      return $.get(URL+'/schema/update');
+    updateSchema: function(id) {
+      return $.get(URL+'/schema/update/'+id);
     },
 
     /*
@@ -32,14 +32,9 @@ define([
       return $.post(URL+'/schema/create', data);
     },
 
-    updateSchema: function(schema) {
-      return $.ajax({
-        type: "PUT",
-        url: URL+'/schema/update',
-        contentType: 'application/json',
-        data: schema
-      });
+    updateSchema: function(id, data) {
+      return $.post(URL+'/schema/update/'+id, data);
     }
-    */
+    */ 
   }
 })
