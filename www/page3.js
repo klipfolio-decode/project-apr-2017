@@ -2,8 +2,8 @@ define([
   "api.js"
 ], function(API) {
   return {
-    headers: function(id) {
-      API.getColumnHeaders(id)
+    headers: function(fileID) {
+      API.getColumnHeaders(fileID)
         .done(function(data) {
           var len = data.headers.length;
           $("#page-3").append('<div class="btn-group" data-toggle="buttons">');

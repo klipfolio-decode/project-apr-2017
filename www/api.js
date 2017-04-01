@@ -3,7 +3,7 @@ define([
   var URL = 'http://localhost:8080';
 
   return {
-    getColumnHeaders: function(id) {
+    getColumnHeaders: function(fileID) {
       return $.get(URL+'/files/headers');
     },
 
