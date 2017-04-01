@@ -153,6 +153,21 @@ app.post('/schema/update/:id', function(req, res){
 
 });
 
+app.get('/schema/delete/:id', function(req,res){
+
+  mongo.connect(DBURL,function(err,db){
+    if(err){
+      console.log("Failes to connect to the database.");
+      res.sendStatus(500);
+      db.close();
+    }else{
+      var id = req.params.id;
+      console.log(id);
+      deleteSchema(db,id,req,res);
+    }
+  });
+});
+
 app.get('/schema/get/:id', function(req, res){
   //mongo schemas data
   mongo.connect(DBURL,function(err,db){
@@ -218,5 +233,17 @@ function updateSchema(db,schema,id,req,res){
           console.log("Result: "+result);
           res.json({});
       }
+  });
+}
+
+function deleteSchema(db,id,req,res){
+  db.collection("schemas").remove({"_id":ObjectId(id)},function(err,result){
+    if(err){
+      console.log("Error: ", err);
+      db.close()
+    }else{
+      console.log("Result: "+result);
+      res.json({});
+    }
   });
 }
