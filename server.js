@@ -7,7 +7,7 @@ var bodyParser = require("body-parser");
 
 var app = express();
 
-var DBURL = "mongodb://localhost:27017/klipfolioDecodeDB"
+var DBURL = "mongodb://root:root@ds147520.mlab.com:47520/klip-decode"
 
 //Serving templates
 app.set('www','./www');
@@ -30,7 +30,7 @@ app.get('/hello', function(req, res) {
 });
 
 app.get('/files/list', function(req, res) { //getFileList
-  
+
     res.json({ files:["file1","file2"]});  //format shown
 });
 
@@ -43,7 +43,7 @@ app.get('/files/headers', function(req, res){ //getColumnHeaders
         db.close();
       }else{
         //var id = req.query.id;
-        var id = "58df0121e3ba5cf642b85c07";
+        var id = "58df016664569de96ec7469b";
         db.collection("files").findOne({"_id": ObjectId(id)}, function(err, rec){
           if (err) {
             console.log("Failed to connect to database. ERROR: ", err);
@@ -53,7 +53,7 @@ app.get('/files/headers', function(req, res){ //getColumnHeaders
             var data = rec.data;
             //var someArray = data_to_header_array (data);
             //res.json({  headers: someArray }); //potentially return data[[]]
-            //console.log(data);
+            console.log(data);
           }
         });
       }
@@ -69,7 +69,7 @@ app.get('/schema/create', function(req, res){ //createSchema
       db.close();
     }else{
       //var id = req.query.id;
-      var id = "58df0121e3ba5cf642b85c07";
+      var id = "58df016664569de96ec7469b";
       db.collection("files").findOne({"_id": ObjectId(id)}, function(err, rec){
         if (err) {
           console.log("Failed to connect to database. ERROR: ", err);
@@ -146,7 +146,7 @@ app.get('/schema/get', function(req, res){
       db.close();
     }else{
       //var id = req.query.id;
-      var id = "58dfc2f4064b6d10a479a03c";
+      var id = "58dfd37764569de96ec7469c";
       db.collection("schemas").findOne({"_id": ObjectId(id)}, function(err, rec){
         if (err) {
           console.log("Failed to connect to database. ERROR: ", err);
