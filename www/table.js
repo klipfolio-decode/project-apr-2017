@@ -9,7 +9,7 @@ define([
             var num_rows = sample.data[0].length;
             var num_cols = sample.data.length;
             var style = sample.style;
-            var theader = "<table id='table1' width = 60% ><tr>";
+            var theader = "<table id='table1' style='margin: auto;' width = 80% ><tr>";
             var tbody = " ";
 
             for(var j = 0; j < num_cols; j++)
