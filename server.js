@@ -153,7 +153,7 @@ app.post('/schema/update/:id', function(req, res){
 
 });
 
-app.get('/schema/delete/:id', function(req,res){
+app.delete('/schema/delete/:id', function(req,res){
 
   mongo.connect(DBURL,function(err,db){
     if(err){

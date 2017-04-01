@@ -35,7 +35,7 @@ define([
             		tbody += schema.data[j][i];
             		tbody += "</td>"
             	}
-            	tbody += "</tr><br />";
+            	tbody += "</tr>";
             }
             var tfooter = "</table>";
 
