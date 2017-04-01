@@ -88,14 +88,12 @@ app.get('/schema/create', function(req, res){ //createSchema
 
 
     //insert mongo schema. This is just a test schema for now.
-    var schema = {"data":"NEWWWWW",
-                  "type":"line",
-                  "style":{
-                      "css1":"12",
-                      "css2":"45",
-                      "css3":"78"
-                   }
-                }
+    var schema = {"data":[[123,34],[56,09]],
+                   "type":"line",
+                   "style":{
+                       "border-style":"dotted"
+                    }
+                 }
 
     insertSchema(db,schema,req,res);  //inserts schema and sends schema id
 
@@ -133,12 +131,34 @@ app.get('/schema/list', function(req, res){
   });
 });
 
-app.get('/schema/update', function(req, res){
+app.get('/schema/update/:id', function(req, res){
    //update mongo schema
-    res.json(schema.update_schema(null, null));
+   mongo.connect(DBURL,function(err,db){
+     if (err){
+       console.log("Failed to connect to the database.");
+       res.sendStatus(500);
+       db.close();
+     }else{
+       var id = req.params.id;
+       //console.log(id);
+       //var id = "58dfd37764569de96ec7469c";
+       db.collection("schemas").findOne({"_id": ObjectId(id)}, function(err, rec){
+         if (err) {
+           console.log("Failed to connect to database. ERROR: ", err);
+           res.sendStatus(500);
+           db.close();
+         } else {
+           console.log(rec);
+
+           //res.json(rec);
+         }
+       });
+     }
+   });
+
 });
 
-app.get('/schema/get', function(req, res){
+app.get('/schema/get/:id', function(req, res){
   //mongo schemas data
   mongo.connect(DBURL,function(err,db){
     if (err){
@@ -146,8 +166,9 @@ app.get('/schema/get', function(req, res){
       res.sendStatus(500);
       db.close();
     }else{
-      //var id = req.query.id;
-      var id = "58dfd37764569de96ec7469c";
+      var id = req.params.id;
+      console.log(id);
+      //var id = "58dfd37764569de96ec7469c";
       db.collection("schemas").findOne({"_id": ObjectId(id)}, function(err, rec){
         if (err) {
           console.log("Failed to connect to database. ERROR: ", err);
@@ -188,3 +209,19 @@ function insertSchema(db,schema,req,res){
     }
   });
 }
+
+/*
+function updateSchema(db,schema,req,res){
+
+  db.collection("schemas").update({name:req.body.name},req.body,{upsert:true},function(err,result){
+      if(err){
+          res.sendStatus(500);
+          db.close();
+      } else {
+          console.log("Result: "+result);
+          res.sendStatus(200);
+      }
+  });
+
+}
+*/
