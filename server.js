@@ -5,7 +5,7 @@ var mongo = require('mongodb').MongoClient;
 
 var app = express();
 
-var DBURL = "mongodb://localhost:27017/klipfolioDecodeDB"
+var DBURL = "mongodb://localhost:27017/klipfolioDecodeDB";
 
 //Serving templates
 app.set('www','./www');
