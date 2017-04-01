@@ -1,7 +1,8 @@
 {
-    "name": "decode",
-    "main": "server.js",
-    "dependencies": {
-        "requirejs": "2.3.3"
-    }
+  "name": "decode",
+  "main": "server.js",
+  "dependencies": {
+    "chart.js": "^2.5.0",
+    "requirejs": "2.3.3"
+  }
 }
