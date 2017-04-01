@@ -1,9 +1,7 @@
 define([
     "header.js",
-    "api.js",
-    "dashboard.js",
-    "table.js"
-], function(Header, API, Dashboard, Table){
+    "dashboard.js"
+], function(Header, Dashboard){
     Header.init();
     Dashboard.init();
 });

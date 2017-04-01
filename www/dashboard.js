@@ -1,7 +1,8 @@
 define([
     "api.js",
-    "visualization.js"
-], function(API, Viz) {
+    "visualization.js",
+    "utils.js"
+], function(API, Viz, Utils) {
     return {
         init: function() {
             this.renderDashboard();
@@ -15,11 +16,35 @@ define([
                 data.ids.forEach(function(id) {
                     API.getSchema(id)
                     .done(function(data) {
-                        // add the viz to the dashboard 
-                        $("#dashboard-container").append("<div>" + Viz.getVisualisation(data) + "<hr>");
-                    });
-                });
-            });
+                        var id = data._id;
+
+                        // add the viz to the dashboard
+                        $("#dashboard-container").append("<div id='"+id+">")
+                            .append("<button id='"+id+"-edit' style='float:right;'>Edit <span class='glyphicon glyphicon-edit'>")
+                            .append(Viz.getVisualisation(data) + "<hr>");
+                        this.registerVisualisationClickHandler(id);
+                    }.bind(this));
+                }.bind(this));
+            }.bind(this));
+        },
+        registerVisualisationClickHandler: function(id) {
+            $("#"+id+"-edit").click(function() {
+                this.showEdit(id);
+            }.bind(this));
+        },
+        showEdit: function(id) {
+            var edit = $("#edit")
+            var editField = $("#viz-edit-id");
+
+    	    if (edit.hasClass("edit-show")) {
+    	    	edit.removeClass("edit-show");
+                editField.val("");
+                console.log(Utils.getCurrentlyEditingID());
+    	    } else {
+    	    	edit.addClass("edit-show");
+                editField.val(id);
+                console.log(Utils.getCurrentlyEditingID());
+    	    }
         }
     };
 });
