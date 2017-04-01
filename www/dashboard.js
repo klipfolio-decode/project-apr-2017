@@ -30,25 +30,29 @@ define([
         },
         registerVisualisationClickHandler: function(id) {
             $("#"+id+"-edit").click(function() {
-                this.showEdit(id);
+                this.toggleEdit(id);
             }.bind(this));
             $("#"+id+"-delete").click(function() {
                 this.promptDelete(id);
             }.bind(this));
         },
-        showEdit: function(id) {
+        toggleEdit: function(id) {
             var edit = $("#edit")
             var editField = $("#viz-edit-id");
 
     	    if (edit.hasClass("edit-show")) {
     	    	edit.removeClass("edit-show");
                 editField.val("");
-                console.log(Utils.getCurrentlyEditingID());
     	    } else {
     	    	edit.addClass("edit-show");
                 editField.val(id);
-                console.log(Utils.getCurrentlyEditingID());
     	    }
+        },
+        hideEdit: function() {
+            var edit = $("#edit")
+            var editField = $("#viz-edit-id");
+            edit.removeClass("edit-show");
+            editField.val("");
         },
         promptDelete: function(id) {
             API.deleteSchema(id)
