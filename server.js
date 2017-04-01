@@ -7,6 +7,11 @@ var bodyParser = require("body-parser");
 
 var app = express();
 
+// app.configure(function() {
+//   app.use(express.bodyParser());
+//   app.use(app.router);
+// });
+
 var DBURL = "mongodb://root:root@ds147520.mlab.com:47520/klip-decode"
 
 //Serving templates
@@ -37,7 +42,6 @@ app.get('/files/headers', function(req, res){ //getColumnHeaders
     mongo.connect(DBURL,function(err,db){
       if (err){
         console.log("Failed to connect to the database.");
-        res.sendStatus(500);
         db.close();
       }else{
         //var id = req.query.id;
@@ -45,7 +49,6 @@ app.get('/files/headers', function(req, res){ //getColumnHeaders
         db.collection("files").findOne({"_id": ObjectId(id)}, function(err, rec){
           if (err) {
             console.log("Failed to connect to database. ERROR: ", err);
-            res.sendStatus(500);
             db.close();
           } else {
             var data = rec.data;
@@ -64,7 +67,6 @@ app.get('/schema/create', function(req, res){ //createSchema
   mongo.connect(DBURL,function(err,db){
     if (err){
       console.log("Failed to connect to the database.");
-      res.sendStatus(500);
       db.close();
     }else{
       //var id = req.query.id;
@@ -72,7 +74,6 @@ app.get('/schema/create', function(req, res){ //createSchema
       db.collection("files").findOne({"_id": ObjectId(id)}, function(err, rec){
         if (err) {
           console.log("Failed to connect to database. ERROR: ", err);
-          res.sendStatus(500);
           db.close();
         } else {
           var data = rec.data;
@@ -103,12 +104,11 @@ app.get('/schema/list', function(req, res){
   mongo.connect(DBURL,function(err,db){
     if (err){
       console.log("Failed to connect to the database.");
-      res.sendStatus(500);
       db.close();
     }else{
       db.collection("schemas").find({},{type:0, data:0, style:0},function(err,cursor){
         if(err){
-          res.sendStatus(500);
+          console.log("Error: ",err);
         }else{
           var schemaList = [];
           cursor.each(function(err,doc){
@@ -129,12 +129,13 @@ app.get('/schema/list', function(req, res){
   });
 });
 
-app.get('/schema/update/:id', function(req, res){
+app.use("/schema/update/:id",bodyParser.urlencoded({extended:true}));
+
+app.post('/schema/update/:id', function(req, res){
    //update mongo schema
    mongo.connect(DBURL,function(err,db){
      if (err){
        console.log("Failed to connect to the database.");
-       res.sendStatus(500);
        db.close();
      }else{
        var id = req.params.id;
@@ -143,10 +144,12 @@ app.get('/schema/update/:id', function(req, res){
        db.collection("schemas").findOne({"_id": ObjectId(id)}, function(err, rec){
          if (err) {
            console.log("Failed to connect to database. ERROR: ", err);
-           res.sendStatus(500);
            db.close();
          } else {
-           console.log(rec);
+           //console.log(rec);
+           //res.json(rec);
+           console.log("body:" + JSON.stringify(req.body));
+           updateSchema(db,rec,id,req,res);
 
            //res.json(rec);
          }
@@ -161,7 +164,6 @@ app.get('/schema/get/:id', function(req, res){
   mongo.connect(DBURL,function(err,db){
     if (err){
       console.log("Failed to connect to the database.");
-      res.sendStatus(500);
       db.close();
     }else{
       var id = req.params.id;
@@ -170,7 +172,6 @@ app.get('/schema/get/:id', function(req, res){
       db.collection("schemas").findOne({"_id": ObjectId(id)}, function(err, rec){
         if (err) {
           console.log("Failed to connect to database. ERROR: ", err);
-          res.sendStatus(500);
           db.close();
         } else {
           res.json(rec);
@@ -198,7 +199,6 @@ function insertSchema(db,schema,req,res){
   db.collection("schemas").insert(schema, function(err,result){
     if(err){
       console.log("Error inserting schema: ", err);
-      res.sendStatus(500);
       db.close();
     }else{
       console.log("Schema inserted with _id: ", result.insertedIds[0]);
@@ -208,18 +208,15 @@ function insertSchema(db,schema,req,res){
   });
 }
 
-/*
-function updateSchema(db,schema,req,res){
 
-  db.collection("schemas").update({name:req.body.name},req.body,{upsert:true},function(err,result){
+function updateSchema(db,schema,id,req,res){
+  db.collection("schemas").update({"_id":ObjectId(id)},schema,{upsert:true},function(err,result){
       if(err){
-          res.sendStatus(500);
           db.close();
       } else {
           console.log("Result: "+result);
-          res.sendStatus(200);
+          res.json({});
       }
   });
 
 }
-*/
