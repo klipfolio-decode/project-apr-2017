@@ -32,10 +32,37 @@ app.get('/hello', function(req, res) {
 
 app.get('/files/list', function(req, res) { //getFileList
 
-    res.json({ files:["file1","file2"]});  //format shown
+  mongo.connect(DBURL,function(err,db){
+    if (err){
+      console.log("Failed to connect to the database.");
+      res.sendStatus(500);
+      db.close();
+    }else{
+      db.collection("files").find({},{filename:1},function(err,cursor){
+        if(err){
+          res.sendStatus(500);
+        }else{
+          var fileList = [];
+          cursor.each(function(err,doc){
+            if(err){
+              console.log("ERR: ",err);
+              //res.sendStatus(500);
+            }else if (doc === null){
+              console.log(fileList);
+              res.json({files:fileList});  //sending an object with the form {files: [name1, name2, ...]}
+              db.close();
+            }else{
+              fileList.push({"name":doc.filename,"id":doc._id});
+            }
+          })
+        }
+      });
+    }
+  });
+    //res.json({ files:["file1","file2"]});  //format shown
 });
 
-app.get('/files/headers', function(req, res){ //getColumnHeaders
+app.get('/files/headers/:id', function(req, res){ //getColumnHeaders
     //gets data from file given id
     mongo.connect(DBURL,function(err,db){
       if (err){
@@ -43,8 +70,8 @@ app.get('/files/headers', function(req, res){ //getColumnHeaders
         res.sendStatus(500);
         db.close();
       }else{
-        //var id = req.query.id;
-        var id = "58df016664569de96ec7469b";
+        var id = req.params.id;
+        //var id = "58df016664569de96ec7469b";
         db.collection("files").findOne({"_id": ObjectId(id)}, function(err, rec){
           if (err) {
             console.log("Failed to connect to database. ERROR: ", err);
@@ -63,7 +90,7 @@ app.get('/files/headers', function(req, res){ //getColumnHeaders
     });
 });
 
-app.post('/schema/create', function(req, res){ //createSchema
+app.post('/schema/create/:id', function(req, res){ //createSchema
   //gets data from file given id
   mongo.connect(DBURL,function(err,db){
     if (err){
@@ -73,8 +100,8 @@ app.post('/schema/create', function(req, res){ //createSchema
     }
 
     else{
-      //var id = req.query.id;
-      var id = "58df016664569de96ec7469b";
+      var id = req.params.id;
+      //var id = "58df016664569de96ec7469b";
       db.collection("files").findOne({"_id": ObjectId(id)}, function(err, rec){
         if (err) {
           console.log("Failed to connect to database. ERROR: ", err);

@@ -4,7 +4,7 @@ define([
 
   return {
     getColumnHeaders: function(fileID) {
-      return $.get(URL+'/files/headers');
+      return $.get(URL+'/files/headers/'+fileID);
     },
 
     getSchemaList: function() {
@@ -19,9 +19,9 @@ define([
       return $.get(URL+'/files/list');
     },
 
-    createSchema: function(data) {
+    createSchema: function(data, fileId) {
         return $.ajax({
-            url: URL+'/schema/create',
+            url: URL+'/schema/create/'+fileId,
             type: "POST",
             data: JSON.stringify(data),
             dataType: "json",
